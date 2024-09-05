@@ -1,0 +1,434 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #3b0e68;
+}
+
+.container__main {
+    width: 450px;
+    height: 720px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #232323;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #080808;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+    top: 20px;
+    left: 20px;
+
+    border-radius: 20%;
+    box-shadow: 0px 5px 15px #8030a9;
+}
+
+@font-face {
+    font-family: 'Iceland';
+    src: local('Iceland'),
+        url(/fonts/Iceland.ttf) format('truetype');
+}
+
+.name__assistant {
+    font-family: Iceland;
+    position: absolute;
+    color: #8030a9;
+    text-shadow: 0px 0px 20px #8030a9;
+
+    top: 20px;
+    left: 75px;
+    font-size: 45px;
+    cursor: default;
+}
+
+.name__assistant__version {
+  color: #666666;
+  font-size: 20px;
+}
+
+a {
+  text-decoration:none;
+}
+
+a:active {
+  /* Цвет ссылки при клике */
+  color: #8030a9;
+}
+
+a:visited {
+  /* Цвет посещённой ссылки */
+  color: #8030a9;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.section {
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.burger-menu__button {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 30;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+
+.burger-menu__button:hover .burger-menu__lines {
+	filter: brightness(0.8);
+}
+
+.burger-menu__lines,
+.burger-menu__lines::after,
+.burger-menu__lines::before {
+	position: absolute;
+	width: 40px;
+	height: 6px;
+	background-color: #8030a9;
+    
+    border-radius: 300px;
+}
+
+
+.burger-menu__lines {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  border-radius: 300px;
+}
+
+.burger-menu__lines::before {
+	content: '';
+	top: -12px;
+  box-shadow: 0px 0px 20px #7600b1;
+}
+
+.burger-menu__lines::after {
+	content: '';
+	top: 12px;
+    box-shadow: 0px 0px 20px #7600b1;
+}
+
+.burger-menu_active .burger-menu__lines {
+	background-color: transparent;
+}
+
+.burger-menu_active .burger-menu__lines::before {
+	top: 0;
+	transform: rotate(45deg);
+}
+
+.burger-menu_active .burger-menu__lines::after {
+	top: 0;
+	transform: rotate(-45deg);
+}
+
+.burger-menu__nav {
+	padding-top: 80px;
+	position: fixed;
+	z-index: 20;
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	background-color: #2a2a2a;
+	overflow-y: auto;
+	left: 100%;
+    width: 400px;
+    transition: left 0.5s ease-in-out;
+}
+
+.burger-menu_active .burger-menu__nav{
+	left: 251px;
+    transition: left 0.5s ease-in-out;
+}
+
+.burger-menu__link {
+	padding: 30px;
+	font-family: sans-serif;
+	font-size: 32px;
+	text-decoration: none;
+	color: #8030a9;
+  transition: left 2s ease-in-out;
+  text-shadow: 0px 0px 20px #8030a9;
+  font-family: Iceland;
+}
+
+.burger-menu__link:hover {
+  background-color: #272727;
+}
+
+.burger-menu__overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+}
+
+.burger-menu_active .burger-menu__overlay {
+	display: block;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.version {
+  position: relative;
+
+  left: 20px;
+  top: 410px;
+  
+  font-family: Iceland;
+  color: white;
+  font-size: 20px;
+  cursor: default;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.mic {
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+  }
+  .mic::before, .mic::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    z-index: 2;
+    box-shadow: 0 0 20px 20px #1c084f;
+  }
+  .mic::before {
+    width: 260px;
+    height: 260px;
+    background-color: #1a084e;
+  }
+  .mic::after {
+    width: 250px;
+    height: 250px;
+    background-color: #2f1e5f;
+    animation: circle-size 0.8s linear infinite alternate;
+  }
+  .mic-icon {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(5);
+    display: block;
+    width: 16px;
+    height: 12px;
+    border-bottom-left-radius: 120px;
+    border-bottom-right-radius: 120px;
+    border: 2px solid;
+    border-top: 0;
+    margin-top: 20px;
+    z-index: 3;
+  }
+  .mic-icon::before, .mic-icon::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+  }
+  .mic-icon::before {
+    width: 2px;
+    height: 5px;
+    top: calc(100% + 1px);
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #fff;
+  }
+  .mic-icon::after {
+    border: 2px solid;
+    width: 8px;
+    height: 18px;
+    left: 50%;
+    top: -10px;
+    border-radius: 4px;
+    transform: translate(-50%, 0);
+  }
+  .mic-shadow {
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    z-index: 1;
+    box-shadow: 10px 55px 30px 15px #823ca6, 24px -10px 47px 10px #aab3d2, -21px -25px 70px 10px #5acee3, 51px 5px 17px 10px #1b7d8f, 3px 2px 55px 10px #f30bf5;
+    animation: shadow-rotate 2.5s linear infinite;
+    transform-origin: center;
+  }
+  @keyframes circle-size {
+    from {
+      width: 200px;
+      height: 200px;
+    }
+    to {
+      width: 220px;
+      height: 220px;
+    }
+  }
+  @keyframes shadow-rotate {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.information__container {
+  position: relative;
+  
+  width: 80%;
+  height: 110px;
+  top: 525px;
+  border-radius: 10px;
+
+  background-color: #1A1A1A;
+  box-shadow: 0px 0px 20px #8030a9;;
+}
+
+.circle_resource {
+  position: relative;
+
+  width: 16px;
+  height: 16px;
+
+  right: 130px;
+  top: 14px;
+  
+  background-color: #8030a9;
+  box-shadow: 0px 0px 20px #B600AD;
+  border-radius: 100%;
+}
+
+.title_resource {
+  position: relative;
+
+  right: 70px;
+  top: -4px;
+  
+  font-family: Iceland;
+  color: white;
+  font-size: 20px;
+}
+
+h4 {
+  position: relative;
+  font-family: Iceland;
+  color: #666666;
+  font-size: 15px;
+}
+
+.cpu_information {
+  right: 85px;
+  top: -3px;
+}
+
+.ram_information {
+  right: 74px;
+  top: -1px;
+}
+
+.circle_microphone {
+  position: relative;
+
+  width: 16px;
+  height: 16px;
+
+  left: 20px;
+  top: -50px;
+  
+  background-color: #8030a9;
+  box-shadow: 0px 0px 20px #B600AD;
+  border-radius: 100%;
+}
+
+.title_microphone {
+  position: relative;
+
+  left: 90px;
+  top: -68px;
+  
+  font-family: Iceland;
+  color: white;
+  font-size: 20px;
+}
+
+.microphone_information {
+  left: 93px;
+  top: -68px;
+}
+
+.circle_temperature {
+  position: relative;
+
+  width: 16px;
+  height: 16px;
+
+  right: 90px;
+  top: -35px;
+  
+  background-color: #8030a9;
+  box-shadow: 0px 0px 20px #B600AD;
+  border-radius: 100%;
+}
+
+.title_temperature {
+  position: relative;
+
+  left: 20px;
+  top: -53px;
+  
+  font-family: Iceland;
+  color: white;
+  font-size: 20px;
+}
+
+p {
+  position: relative;
+  font-family: Iceland;
+  color: white;
+  font-size: 16px;
+  top: 670px;
+}
+
+.exactly {
+  color: #8030a9;
+  text-shadow: 0px 0px 10px #8030a9;
+}
+
+.fictional {
+  color: #8030a9;
+  text-shadow: 0px 0px 10px #8030a9;
+}
+
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
