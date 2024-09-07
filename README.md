@@ -1,46 +1,71 @@
-Stella Voice Assistant
-Stella is a voice-controlled assistant built using Python. The assistant can recognize voice commands to perform various tasks such as web searches, opening programs, adjusting system volume, creating files or folders, and controlling system functions like shutdown, restart, and sleep mode.
+Ось перекладений варіант `README.md` для твого проєкту голосового асистента:
 
-Features
-Speech Recognition: Listens to user commands and processes them in Ukrainian.
-Voice Responses: Uses Google Text-to-Speech (gTTS) for voice output.
-Web Integration: Opens websites and performs Google searches.
-Program Control: Launches programs via system search.
-File Management: Creates text documents and folders on the desktop.
-System Control: Adjusts volume, shuts down, restarts, or puts the system to sleep.
-Requirements
-Before running the project, ensure you have the following dependencies installed:
+---
 
-bash
-Копировать код
+# Голосовий асистент Stella
+
+Stella — це голосовий асистент, керований голосом, створений на Python. Асистент може розпізнавати голосові команди для виконання різних завдань, таких як пошук в інтернеті, відкриття програм, регулювання гучності системи, створення файлів або папок і керування системними функціями, такими як вимкнення, перезавантаження та режим сну.
+
+## Можливості
+
+- **Розпізнавання голосу**: Слухає команди користувача та обробляє їх українською мовою.
+- **Голосові відповіді**: Використовує Google Text-to-Speech (gTTS) для голосових відповідей.
+- **Інтеграція з інтернетом**: Відкриває вебсайти та виконує пошук в Google.
+- **Керування програмами**: Запускає програми через системний пошук.
+- **Управління файлами**: Створює текстові документи та папки на робочому столі.
+- **Керування системою**: Регулює гучність, вимикає, перезавантажує або переводить систему в режим сну.
+
+## Вимоги
+
+Перед запуском проєкту переконайтеся, що у вас встановлені наступні залежності:
+
+```bash
 pip install eel requests beautifulsoup4 pygame gtts pyautogui pyperclip pyaudio pycaw SpeechRecognition
-Usage
-Clone the repository and navigate to the project directory.
+```
 
-bash
-Копировать код
-git clone https://github.com/im-fictional/voice-assistant.git
-cd voice-assistant
-Run the assistant:
+## Використання
 
-bash
-Копировать код
-python assistant.py
-Use voice commands like:
+1. Клонувати репозиторій і перейти до директорії проєкту:
+   
+   ```bash
+   git clone https://github.com/im-fictional/voice-assistant.git
+   cd voice-assistant
+   ```
 
-"Stella, відкрий YouTube": Opens YouTube in the browser.
-"Stella, який зараз час?": Tells the current time.
-"Stella, гучність на 50%": Adjusts the system volume to 50%.
-"Stella, створити папку": Creates a folder on the desktop.
-"Stella, виключи комп'ютер": Shuts down the computer.
-Project Structure
-assistant.py: Main script for handling commands and controlling the assistant.
-commands.py: Contains mappings for various commands in Ukrainian.
-web/: Contains the frontend for the assistant using Eel.
-Frontend
-The project uses Eel to provide a simple web-based interface.
+2. Запустити асистента:
 
-Future Improvements
-Add more voice commands.
-Improve the speech recognition model.
-Add support for other languages.
+   ```bash
+   python assistant.py
+   ```
+
+3. Використовувати голосові команди, наприклад:
+   
+   - **"Stella, відкрий YouTube"**: Відкриває YouTube в браузері.
+   - **"Stella, який зараз час?"**: Повідомляє поточний час.
+   - **"Stella, гучність на 50%"**: Регулює гучність системи на 50%.
+   - **"Stella, створити папку"**: Створює папку на робочому столі.
+   - **"Stella, виключи комп'ютер"**: Вимикає комп'ютер.
+
+## Структура проєкту
+
+- **`assistant.py`**: Основний скрипт для обробки команд і керування асистентом.
+- **`commands.py`**: Містить відповідності для різних команд українською мовою.
+- **`web/`**: Містить фронтенд для асистента з використанням Eel.
+
+## Фронтенд
+
+Проєкт використовує Eel для надання простого веб-інтерфейсу.
+
+## Майбутні покращення
+
+- Додати більше голосових команд.
+- Покращити модель розпізнавання голосу.
+- Додати підтримку інших мов.
+
+## Ліцензія
+
+Цей проєкт ліцензований за умовами ліцензії MIT.
+
+---
+
+Якщо треба щось змінити або додати, дай знати!
