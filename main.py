@@ -28,7 +28,7 @@ from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 @eel.expose
 def stella_assistant():
 
-    # ФУНКЦІЯ ОЗВУЧУВАННЯ АСИСТЕНТА
+    # FUNCTION FOR ASSISTANT SPEECH
     LNG2 = 'uk'
     pygame.init()
 
@@ -47,13 +47,13 @@ def stella_assistant():
             pygame.time.Clock().tick(10)
 
     
-    # ФУНКЦІЯ ПОШУКУ ІНФОРМАЦІЇ В ІНТЕРНЕТІ
+    # FUNCTION FOR INTERNET SEARCH
     def google_search(query):
         search_url = f"https://www.google.com/search?q={query}"
         webbrowser.open(search_url)
 
     
-    # ФУНКЦІЯ ВІДКРИТТЯ САЙТІВ
+    # FUNCTION FOR OPENING WEBSITES
     def info_search(task):
         search_url = f"https://www.google.com/search?q={task}"
         headers = {
@@ -74,7 +74,7 @@ def stella_assistant():
             print("Не вдалося знайти результатів.")
 
     
-    # ФУНКЦІЯ ВІДКРИТТЯ ПРОГРАМ
+    # FUNCTION FOR OPENING PROGRAMS
     def open_program(program_name):
         print(f"Запускаю: {program_name}")
         pyautogui.hotkey('win', 's')  # Відкрити пошук через Win
@@ -83,7 +83,7 @@ def stella_assistant():
         pyautogui.press('enter')  # Натиснути Enter для запуску програми
 
 
-    # ФУНКЦІЯ РЕГУЛЮВАННЯ ГУЧНОСТІ
+    # FUNCTION FOR ADJUSTING VOLUME
     def set_volume(level):
         devices = AudioUtilities.GetSpeakers()
         interface = devices.Activate(
@@ -93,7 +93,7 @@ def stella_assistant():
         print(f"Гучність встановлена на {level}%")
     
 
-    # ФУНКЦІЯ СТВОРЕННЯ ТЕКСТОВОГО ДОКУМЕНТА НА РОБОЧОМУ СТОЛІ
+    # FUNCTION TO CREATE A TEXT FILE ON THE DESKTOP
     def create_empty_text_file_on_desktop(filename):
         def get_desktop_path():
             if os.name == 'nt':  # Windows
@@ -119,7 +119,7 @@ def stella_assistant():
             speak_engine(f"Сталась невідома помилка.")
 
 
-    # ФУНКЦІЯ СТВОРЕННЯ ПАПКИ НА РОБОЧОМУ СТОЛІ
+    # FUNCTION TO CREATE A FOLDER ON THE DESKTOP
     def create_folder_on_desktop(foldername):
         def get_desktop_path():
             if os.name == 'nt':  # Windows
@@ -144,7 +144,7 @@ def stella_assistant():
             speak_engine(f"Сталась невідома помилка.")
 
 
-    # ФУНКЦІЯ ВИМКНЕННЯ ПРИСТРОЮ
+    # FUNCTION TO SHUT DOWN THE DEVICE
     def shutdown_computer():
         system_name = platform.system()
         if system_name == "Windows":
@@ -157,7 +157,7 @@ def stella_assistant():
             print(f"Unsupported operating system: {system_name}")
 
 
-    # ФУНКЦІЯ ПЕРЕЗАПУСКУ ПРИСТРОЮ
+    # FUNCTION TO RESTART THE DEVICE
     def restart_computer():
         system_name = platform.system()
         if system_name == "Windows":
@@ -168,7 +168,7 @@ def stella_assistant():
             print(f"Unsupported operating system: {system_name}")
 
 
-    # ФУНКЦІЯ РЕЖИМУ СНУ
+    # FUNCTION FOR SLEEP MODE
     def sleep_computer():
         system_name = platform.system()
         if system_name == "Windows":
@@ -180,29 +180,11 @@ def stella_assistant():
         else:
             print(f"Unsupported operating system: {system_name}")
 
-    
-    # ФУНКЦІЯ ДРУКУ ТЕКСТУ
-    def paste_text(text):
-        # Копіюємо текст у буфер обміну
-        pyperclip.copy(text)
-        # Очікуємо, щоб текст був скопійований у буфер обміну
-        time.sleep(1)
-        # Перемикаємо фокус на відповідне вікно (за необхідності)
-        # pyautogui.click(x, y)  # Натискаємо на вікно, куди вставляється текст
-        # Очікуємо трохи перед вставкою
-        time.sleep(1)
-        # Використовуємо pyautogui для вставки тексту
-        pyautogui.hotkey('ctrl', 'v')
-        # Додаткова затримка після вставки
-        time.sleep(1)
 
 
-
-
-
-    # ФУНКЦІЯ ПЕРЕВІРКИ ТА ЗАПУСКУ КОМАНД
+    # FUNCTION TO CHECK AND EXECUTE COMMANDS
     def process_command(command):
-        # ВІДКРИТТЯ САЙТІВ
+        # OPENING WEBSITES
         if any(cmd in command for cmd in commands["open_info"]):
             speak_engine(random.choice(phrases_of_assistant["perform"]))
             search_query = command.replace(commands["open_info"][0], "").strip()
@@ -213,7 +195,7 @@ def stella_assistant():
             info_search(search_query)
 
 
-        # ПОШУК В ІНТЕРНЕТІ
+        # INTERNET SEARCH
         elif any(cmd in command for cmd in commands["search"]):
             speak_engine(random.choice(phrases_of_assistant["perform"]))
             search_query = command.replace(commands["search"][0], "").strip()
@@ -224,7 +206,7 @@ def stella_assistant():
             google_search(search_query)
 
 
-        # ЗАПУСК ПРОГРАМ
+        # LAUNCH PROGRAMS
         elif any(cmd in command for cmd in commands["run_the_program"]):
             speak_engine(random.choice(phrases_of_assistant["perform"]))
             program_name = command.replace(commands["run_the_program"][0], "").strip()
@@ -235,21 +217,21 @@ def stella_assistant():
             open_program(program_name)
 
 
-        # ВИМКНЕННЯ АСИСТЕНТА
+        # TURN OFF ASSISTANT
         elif any(cmd in command for cmd in commands["stop"]):
             print("Програма зупинена користувачем.")
             speak_engine(random.choice(phrases_of_assistant["finishing_my_work"]))
             return "stop"
         
 
-        # КОТРА ГОДИНА
+        # WHAT TIME IS IT
         elif any(cmd in command for cmd in commands["time_pc"]):
             # Отримання поточного часу
             current_time = datetime.now().strftime('%H:%M')
             speak_engine(f'Зараз: {current_time}')
 
 
-        # РЕГУЛЮВАННЯ ГУЧНОСТІ
+        # VOLUME ADJUSTMENT
         elif any(cmd in command for cmd in commands["volume"]):
             program_name = command.replace(commands["run_the_program"][0], "").strip()
             try:
@@ -291,51 +273,44 @@ def stella_assistant():
                 speak_engine("Не вдалося розпізнати рівень гучності.")
 
 
-        # СТВОРЕННЯ ТЕКСТОВОГО ДОКУМЕНТА
+        # CREATE A TEXT DOCUMENT
         elif any(cmd in command for cmd in commands["create_text_document"]):
             speak_engine(random.choice(phrases_of_assistant["perform"]))
             filename = "empty_example.txt"
             create_empty_text_file_on_desktop(filename)
 
 
-        # СТВОРЕННЯ ПАПКИ
+        # CREATE A FOLDER
         elif any(cmd in command for cmd in commands["create_folder"]):
             speak_engine(random.choice(phrases_of_assistant["perform"]))
             foldername = "NewFolder"
             create_folder_on_desktop(foldername)
 
 
-        # ВИМКНЕННЯ ПРИСТРОЮ
+        # TURN OFF DEVICE
         elif any(cmd in command for cmd in commands["completion_of_work"]):
             speak_engine(random.choice(phrases_of_assistant["shutdown_complete"]))
             shutdown_computer()
 
 
-        # ПЕРЕЗАПУСК ПРИСТРОЮ
-        elif any(cmd in command for cmd in commands["reboot_pc"]):
+        # RESTART DEVICE
+        elif any(cmd in command for cinitmd in commands["reboot_pc"]):
             speak_engine(random.choice(phrases_of_assistant["reboot_complete"]))
             restart_computer()
 
 
-        # РЕЖИМ СНУ
+        # SLEEP MODE
         elif any(cmd in command for cmd in commands["sleep_mode_pc"]):
             speak_engine(random.choice(phrases_of_assistant["sleep_mode_complete"]))
             sleep_computer()
-
-        
-        # ДРУК ТЕКСТУ
-        elif any(cmd in command for cmd in commands["write_right_now"]):
-            text_to_paste = command.replace(commands["write_right_now"][0], "").strip()
-            print(f"Вставляю: {text_to_paste}")
-            speak_engine(random.choice(phrases_of_assistant["perform"]))
-            paste_text(text_to_paste)
+            
         
         else:
             print("Невідома команда. Спробуйте ще раз.")
         return None
     
 
-    # ПРОСЛУХОВУВАННЯ МІКРОФОНУ
+    # FUNCTION TO LISTEN TO THE MICROPHONE
     def recognize_speech_from_microphone():
         speak_engine("Cлухаю!")
         recognizer = sr.Recognizer()
@@ -359,7 +334,7 @@ def stella_assistant():
 
                         for assistant_name in commands["assistant"]:
                             if assistant_name in command:
-                                command = command.replace(assistant_name, "").strip()  # Видалити ім'я з команди
+                                command = command.replace(assistant_name, "").strip()
                                 break
                         
                         last_activation_time = current_time
@@ -367,13 +342,13 @@ def stella_assistant():
                         
                         print(f"Команда після видалення тригера: {command}")
                         
-                        # Обробка команди одразу після видалення тригера
+                        # Process the command immediately after the trigger is removed
                         result = process_command(command)
                         if result == "stop":
                             break
 
-                        last_activation_time = current_time  # Обнулити таймер після успішної команди
-                        continue  # Продовжити слухати наступну команду
+                        last_activation_time = current_time  # Reset the timer after a successful command
+                        continue  # Continue listening for the next command
 
                     if listening_mode:
                         if current_time - last_activation_time > 60:
@@ -383,7 +358,7 @@ def stella_assistant():
                             result = process_command(command)
                             if result == "stop":
                                 break
-                            last_activation_time = current_time  # Обнулити таймер після успішної команди
+                            last_activation_time = current_time  # Reset the timer after a successful command
 
                 except sr.UnknownValueError:
                     continue
